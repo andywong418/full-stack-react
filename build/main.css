@@ -1,0 +1,7 @@
+.hidden-element{
+  visibility: hidden;
+}
+
+.active-element{
+  visibility: visible;
+}
