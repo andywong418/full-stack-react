@@ -18,7 +18,7 @@ export default class ToDoList extends Component{
     return(
       <div>
         <ul>
-          {todos.map((todo) => <ToDoItem item={todo.taskText} completed= {todo.completed}/>)}
+          {todos.map((todo, index, array) => <ToDoItem onClick= {this.props.removeToDo} index={index} item={todo.taskText} completed= {todo.completed}/>)}
         </ul>
       </div>
     )
