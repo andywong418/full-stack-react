@@ -5,3 +5,7 @@
 .active-element{
   visibility: visible;
 }
+
+.todo-element{
+  margin-top: 20px;
+}

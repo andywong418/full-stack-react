@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import InputForm from './InputForm';
 import ToDoList from './ToDoList';
+import axios from 'axios';
+const dbUrl = "http://localhost:3000/db";
 
 export default class ToDoApp extends Component{
   constructor(props){
     super(props);
     this.state= {
       toDoList: [
-        { taskText: "Catch 'em all", completed: false },
-        { taskText: "Free 'em all", completed: false },
-        { taskText: "Screw 'em all", completed: false },
-        { taskText: "Beat 'em all", completed: true }
+        { task: "Catch 'em all", completed: false },
+        { task: "Free 'em all", completed: false },
+        { task: "Screw 'em all", completed: false },
+        { task: "Beat 'em all", completed: true }
       ]
 
     }
@@ -20,10 +22,17 @@ export default class ToDoApp extends Component{
 
   addToDo(todo){
 
-    this.setState({toDoList: this.state.toDoList.slice().concat({
+    axios.post(dbUrl + '/add', {
       taskText: todo,
       completed: false
-    })})
+    })
+    .then(function(response){
+      console.log(response);
+      this.setState({ toDoList: this.state.toDoList.concat(response.data)});
+    }.bind(this))
+    .catch(function(err){
+      console.log(err);
+    })
   }
 
   removeToDo(index){

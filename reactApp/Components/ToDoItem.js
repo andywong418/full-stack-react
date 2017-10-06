@@ -27,7 +27,7 @@ export default class ToDoItem extends Component {
   render(){
     return(
 
-      <div className="row">
+      <div className="row todo-element">
           <div className={this.state.show ? 'active-element' : 'hidden-element'}>
         <div className="col-sm-2">
           {renderItem(this.props.item, this.props.completed, this.props.index)}
