@@ -14,12 +14,21 @@ export default class ToDoApp extends Component{
       ]
 
     }
+    this.addToDo = this.addToDo.bind(this);
+  }
+
+  addToDo(todo){
+
+    this.setState({toDoList: this.state.toDoList.slice().concat({
+      taskText: todo,
+      completed: false
+    })})
   }
 
   render(){
     return(
       <div className="container" style={{padding: '30px'}}>
-        <InputForm />
+        <InputForm addToDo = {this.addToDo}/>
         <ToDoList todos={this.state.toDoList}/>
       </div>
     )
