@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import ToDoItem from './ToDoItem';
 const dummyData = [
-  "List number 1",
-  "List number 2",
-  "List number 3",
-  "List number 4",
-  "List number 5"
+  { taskText: "Catch 'em all", completed: false },
+  { taskText: "Free 'em all", completed: false },
+  { taskText: "Screw 'em all", completed: false },
+  { taskText: "Beat 'em all", completed: true }
 ]
 
 
@@ -15,10 +14,11 @@ export default class ToDoList extends Component{
   }
 
   render(){
+    const {todos} = this.props;
     return(
       <div>
         <ul>
-          {dummyData.map((todo) => <ToDoItem item={todo} />)}
+          {todos.map((todo) => <ToDoItem item={todo.taskText} completed= {todo.completed}/>)}
         </ul>
       </div>
     )
